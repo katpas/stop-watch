@@ -12,7 +12,7 @@
 
         <div class="stopWatch">
         <button type="button" class="start" onclick="startTimer()"> Start!</button>
-        <button type="button" class="stop" onclick="testerstop()"> Stop!</button>
+        <button type="button" class="stop" onclick="stopTimer()"> Stop!</button>
         </div>
       <!-- <input type='text' id='price'> </input> -->
     </div>
@@ -36,15 +36,19 @@
     }());
 
       document.getElementById('display').value = T.timeElapsed;
-
+      var timer;
       var increment = function() {
         T.timeElapsed += 1
         document.getElementById('display').value = T.timeElapsed
         return T.timeElapsed
       }
 
-      var startTimer = function() {
-        setInterval(increment, 10)
+      var startTimer = function( ) {
+        timer = setInterval(increment, 10)
+      }
+
+      var stopTimer = function() {
+        clearInterval(timer)
       }
 
     </script>
@@ -57,10 +61,14 @@
     });
 
 
-   test('When start is clicked the timer starts', function() {
-      var teststarttime = 0
-      equal(startTimer(), T.timeElapsed > teststarttime, 'Message: display value increases')
-    });
+  // test('When start is clicked the timer starts', function(assert) {
+    //  var done = assert.async()
+      //startTimer()
+      //setTimeout(function(){
+      //  assert.equal(T.timeElapsed(), 2000, "Timer has counted 2 seconds")
+        //done();
+      //}, 2000);
+    //});
 
   //test('When start is clicked start time increases continuously without clicking again'. function(assert){
     //  assert.equal ()
